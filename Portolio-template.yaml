@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  DisplayName:
+    Description: "Portfolio name"
+    Type: String
+    Default: "Foundations"
+
+  Description:
+    Description: "Portfolio description"
+    Type: String
+    Default: "The Foundational portfolio should hold all base products we want to set up in the accounts Access is probably broader than others more specific."
+
+  Provider:
+    Description: "Identify the template provider"
+    Type: String
+    Default: "CCoE Team"
+
+Resources:
+  Portfolio:
+    Type: AWS::ServiceCatalog::Portfolio
+    Properties:
+      Description: !Ref Description
+      DisplayName: !Ref DisplayName
+      ProviderName: !Ref Provider
+      Tags: 
+        -
+          Key: "Project"
+          Value: "Shared Service Catalog"
+
+Outputs:
+  PortfolioName:
+    Value: !GetAtt Portfolio.PortfolioName
+    Description: "The portfolio name for reference"
+    Export:
+      Name: !Sub "${AWS::StackName}-PortfolioName"
+
+  PortfolioId:
+      Value: !Ref Portfolio
+      Description: "The portfolio Id for reuse in product stacks"
+      Export:
+        Name: !Sub "${AWS::StackName}-PortfolioId"      
+
+  StackName:
+        Value: !Sub "${AWS::StackName}"
+        Description: "The stackname"
+        Export:
+          Name: !Sub "${AWS::StackName}-StackName" 
