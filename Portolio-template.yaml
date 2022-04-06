@@ -4,12 +4,12 @@ Parameters:
   DisplayName:
     Description: "Portfolio name"
     Type: String
-    Default: "Foundations"
+    Default: "DevOps"
 
   Description:
     Description: "Portfolio description"
     Type: String
-    Default: "The Foundational portfolio should hold all base products we want to set up in the accounts Access is probably broader than others more specific."
+    Default: "DevOps products that allow buidling pipelines, cluster, serverless products."
 
   Provider:
     Description: "Identify the template provider"
